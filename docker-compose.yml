@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  wordpress:
+    container_name: docker-wp-web-container
+    image: wordpress:latest
+    depends_on:
+      - mysql
+    ports:
+      - 80:80
+    working_dir: /var/www/html/
+    volumes:
+      - ./dist:/var/www/html
+      - ./docker/mysql:/var/www/mysql
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: localdb
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: root
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_DEBUG: true
+
+  phpmyadmin:
+    container_name: docker-wp-phpmyadmin-container
+    platform: 'linux/amd64'
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+      - 8888:80
+    volumes:
+      - phpmyadmin:/sessions
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+
+  mysql:
+    container_name: docker-wp-db-container
+    image: mariadb
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./docker/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: localdb
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  phpmyadmin:
+    driver: local
+  mysql:
+    driver: local
