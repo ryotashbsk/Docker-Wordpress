@@ -7,6 +7,9 @@ dist/wp-admin
 dist/wp-includes
 dist/wp-content/plugins
 dist/wp-content/uploads
+dist/wp-content/upgrade
+dist/wp-content/languages
+dist/wp-content/mu-plugins
 dist/wp-content/**.php
 dist/wp-content/themes/*
 !dist/wp-content/themes/my-themes
