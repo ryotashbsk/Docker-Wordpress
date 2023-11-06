@@ -7,7 +7,7 @@
 | **`docker:init`**  | Executed on the initial start of Docker |
 | **`docker:start`** | Start Docker                            |
 | **`docker:stop`**  | Stop Docker                             |
-| **`export-db`**    | Export the database named 'mydb'        |
+| **`export-db`**    | Export the database named 'localdb'     |
 
 #### URLs
 
