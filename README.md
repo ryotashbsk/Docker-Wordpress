@@ -9,7 +9,7 @@
 | **`docker:stop`**  | Stop Docker                                       |
 | **`export-db`**    | Export the database named 'localdb'               |
 
-#### Install WordPress(初回起動時のみ)
+#### Install WordPress (First-time Setup)
 
 ```
 docker exec -it docker-wp-web /bin/bash # Log in to the WordPress container
